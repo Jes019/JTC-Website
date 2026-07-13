@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Request a Property Care Proposal | JTC Malta</title>
+  <meta name="description" content="Tell JTC Property Services about your property and required services to receive a tailored proposal.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div data-site-header></div>
+<main id="main">
+  <header class="page-hero"><div class="wrap"><p class="breadcrumbs"><a href="index.html">Home</a> / Request a Proposal</p><p class="eyebrow">Start with the property</p><h1>Request a Tailored Property Care Proposal</h1><p class="lede">Tell us about the property, how often it should be checked and every service you need. JTC will review the details, confirm availability and prepare a proposal.</p></div></header>
+  <section class="section"><div class="wrap estimator">
+    <form class="panel field-grid" data-quote-form name="quote-request" novalidate>
+      <div class="field"><label for="fullName">Full name *</label><input id="fullName" name="fullName" autocomplete="name" required></div>
+      <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="telephone">Telephone number *</label><input id="telephone" name="telephone" type="tel" autocomplete="tel" required pattern="[0-9+() .-]{7,}"></div>
+      <div class="field"><label for="contactMethod">Preferred contact method *</label><select id="contactMethod" name="contactMethod" required><option value="">Choose one</option><option>Email</option><option>Telephone</option><option>WhatsApp</option></select></div>
+      <div class="field field--wide"><label for="propertyAddress">Property address or locality *</label><input id="propertyAddress" name="propertyAddress" autocomplete="street-address" required></div>
+      <div class="field"><label for="propertyType">Property type *</label><select id="propertyType" name="propertyType" required><option value="">Choose one</option><option>Apartment</option><option>Maisonette</option><option>Townhouse</option><option>Villa</option><option>Penthouse</option><option>Other</option></select></div>
+      <div class="field"><label for="bedrooms">Number of bedrooms *</label><input id="bedrooms" name="bedrooms" type="number" min="0" max="30" required></div>
+      <div class="field"><label for="propertyStatus">Current property status *</label><select id="propertyStatus" name="propertyStatus" required><option value="">Choose one</option><option>Vacant property</option><option>Holiday home</option><option>Owner occasionally in residence</option><option>Long-term rental</option><option>Short-let property</option><option>Between tenants</option><option>Under renovation</option><option>Other</option></select></div>
+      <div class="field"><label for="ownerLocation">Owner location *</label><input id="ownerLocation" name="ownerLocation" placeholder="Country or locality" required></div>
+      <div class="field"><label for="frequency">Preferred inspection frequency *</label><select id="frequency" name="frequency" required><option value="">Choose one</option><option>One-off</option><option>Monthly</option><option>Twice monthly</option><option>Weekly</option><option>Not sure</option></select></div>
+      <div class="field"><label for="plan">Preferred care plan</label><select id="plan" name="plan"><option value="none">Please recommend</option><option value="basic">Basic - €60/month</option><option value="standard">Standard - €120/month</option><option value="premium">Premium - €160/month</option><option value="annual">Combined annual care proposal</option><option value="one-off">One-off inspection proposal</option></select></div>
+
+      <fieldset class="field field--wide" style="border:0;padding:0"><legend class="fieldset-title">Additional services required</legend><p class="fineprint">Select everything relevant. Additional services will be scoped and quoted in your proposal.</p><div class="card-grid" style="grid-template-columns:repeat(2,1fr)">
+        <label class="check-field"><input type="checkbox" name="services" value="Regular refresh cleaning"> Regular refresh cleaning</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Deep cleaning"> Deep cleaning</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Full property refresh"> Full property refresh</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Key holding"> Key holding</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Contractor access"> Contractor access</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Emergency call-outs"> Emergency call-outs</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Handyman work"> Handyman work</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Minor plumbing"> Minor plumbing</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Minor electrical"> Minor electrical</label>
+        <label class="check-field"><input type="checkbox" name="services" value="HVAC"> HVAC support</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Pre-arrival preparation"> Pre-arrival preparation</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Post-departure inspection"> Post-departure inspection</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Post-tenant or post-guest inspection"> Post-tenant or post-guest inspection</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Bill handling"> Bill handling</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Correspondence handling"> Correspondence handling</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Contractor quote coordination"> Contractor quote coordination</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Damage condition report"> Damage condition report</label>
+        <label class="check-field"><input type="checkbox" name="services" value="Appliance visual checks"> Appliance visual checks</label>
+      </div></fieldset>
+
+      <div class="field"><label for="keyHolding">Key holding required?</label><select id="keyHolding" name="keyHolding"><option>Not sure</option><option>Yes</option><option>No</option></select></div>
+      <div class="field"><label for="startDate">Preferred start date</label><input id="startDate" name="startDate" type="date"></div>
+      <div class="field field--wide"><label for="concerns">Immediate concerns or useful details</label><textarea id="concerns" name="concerns" placeholder="Tell us what the property needs. Please do not include alarm codes, key-safe codes, banking details or other sensitive access information."></textarea></div>
+      <div class="honeypot" aria-hidden="true"><label>Leave this blank<input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <label class="check-field field--wide"><input type="checkbox" name="consent" required> I consent to JTC Property Services using these details to respond and prepare a proposal. I have read the <a href="privacy.html">privacy notice</a>. *</label>
+      <div class="field--wide"><button class="button button--gold" type="submit">Request My Property Care Proposal</button><div class="form-status" data-form-status role="status" aria-live="polite"></div></div>
+    </form>
+    <aside><div class="estimate-output"><h2>What happens next?</h2><ol class="process-list"><li>JTC reviews your property details.</li><li>We confirm any information needed to define the scope.</li><li>Availability and access requirements are checked.</li><li>You receive a tailored property care proposal.</li></ol><p><a class="button button--gold" href="tel:+35679599929">Call +356 7959 9929</a></p><p><a href="mailto:JTCpropcare@gmail.com">JTCpropcare@gmail.com</a></p><p class="fineprint" style="color:#c5d2d8">A request does not guarantee availability or constitute a confirmed booking.</p></div></aside>
+  </div></section>
+</main>
+<div data-site-footer></div><script src="js/config.js"></script><script src="js/app.js"></script>
+</body></html>
