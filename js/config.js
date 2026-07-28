@@ -34,5 +34,8 @@ window.JTC_CONFIG = Object.freeze({
     licensedWorkQuotedSeparately: true,
     planAgreement: "yearly"
   },
+  // The contact form does not use quoteEndpoint/enquiryEndpoint - it opens a
+  // pre-filled WhatsApp chat instead (see js/app.js). These stay empty on
+  // purpose so no backend submission is ever silently wired without review.
   integrations: { quoteEndpoint: "", enquiryEndpoint: "", analytics: "", leadSource: "JTC website" }
 });

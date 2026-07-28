@@ -4,11 +4,10 @@ This folder is the production root. `index.html` is directly at the root and the
 
 ## Update before launch
 
-1. Add the chosen form endpoint to `js/config.js` under `integrations.quoteEndpoint`.
+1. The contact form no longer needs a backend endpoint - it opens a pre-filled WhatsApp chat to the business number instead (see "Connected integrations" below). `integrations.quoteEndpoint`/`enquiryEndpoint` in `js/config.js` are intentionally left empty and can stay that way unless a CRM integration is added later.
 2. Add analytics only after selecting a platform and implementing any legally required consent.
 3. Have the draft privacy and service terms reviewed professionally.
 4. Confirm access, key-holding, emergency-authorisation, cancellation and annual-plan terms.
-5. Test one authorised form submission after the endpoint is connected.
 
 ## GitHub upload
 
@@ -40,11 +39,11 @@ The included `vercel.json` adds clean URLs and baseline security headers.
 
 ## Connected integrations
 
-- None. The site is intentionally safe from accidental live submissions or tracking.
+- WhatsApp enquiry flow: the contact form (`contact.html`, logic in `js/app.js`) validates the entered details client-side, then builds a pre-filled message from the submitted fields and opens `https://wa.me/35679599929?text=...` in a new tab so the visitor sends the enquiry directly to JTC's WhatsApp number. Nothing is sent to, or stored on, any server - the message only ever exists in the visitor's own browser and WhatsApp app. An email fallback (`JTCpropcare@gmail.com`) is shown alongside the WhatsApp link, both before submission (fineprint under the form) and in the success message.
+- No other backend, CRM or analytics integration is connected. The site remains safe from accidental live submissions or tracking.
 
 ## Simulated or unconnected features
 
-- The proposal form validates, shows loading/error states and is ready for an endpoint, but does not transmit until configured.
 - The inspection report is a clearly labelled fictional demonstration.
 - Analytics and advertising tracking are not installed.
 

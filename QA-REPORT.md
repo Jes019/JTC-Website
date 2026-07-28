@@ -7,7 +7,7 @@
 - Sticky header, keyboard-accessible mobile menu, skip link, visible focus styles and touch-sized controls.
 - Keyboard-operable inspection demonstration with loading and reset states.
 - Reduced-motion support disables reveal transitions and smooth scrolling.
-- Quote form includes required fields, native and JavaScript validation, honeypot, consent, loading, success and error handling.
+- Quote form includes required fields, native and JavaScript validation, honeypot and consent, and now opens a pre-filled WhatsApp chat to JTC's number (+356 7959 9929) on valid submission, with an email fallback shown both before and after submission. No backend endpoint is used or required.
 - Estimator separates monthly and one-off costs, displays VAT status and exclusions, and does not imply a booking.
 - Approved logo copied unchanged, canonical path verified and descriptive alt text supplied.
 - LocalBusiness structured data, semantic headings, local SEO metadata and Open Graph metadata included.
@@ -23,8 +23,8 @@
 
 ## External items still required
 
-- Form/CRM endpoint and one authorised live submission test.
 - Analytics choice and consent implementation, if needed.
+- If a CRM/back-office system is added later, the WhatsApp flow can stay as a fallback or be replaced with a wired form endpoint - neither is required for the site to work today.
 - Professional review of privacy, cookies, terms, key holding, access authorisation, retention, emergency authority, cancellation, liability and contractor terms.
 - GitHub repository URL and final Vercel project/domain.
 

@@ -72,16 +72,48 @@
   const form = document.querySelector("[data-quote-form]");
   if (form) {
     const queryPlan = new URLSearchParams(location.search).get("plan"); if(queryPlan && form.plan?.querySelector(`option[value="${queryPlan}"]`)) form.plan.value=queryPlan;
-    form.addEventListener("submit", async e => {
-      e.preventDefault(); const status=form.querySelector("[data-form-status]"), submit=form.querySelector("button[type=submit]"); status.className="form-status";
+    // WhatsApp-first enquiry flow: no backend endpoint exists, so the form
+    // never transmits anywhere on its own. Instead it builds a pre-filled
+    // wa.me message from the fields the visitor entered and opens WhatsApp
+    // directly (synchronously, inside the click handler, so browsers don't
+    // treat it as a blocked popup). Nothing here is sent to, or stored on,
+    // any server - the message text only ever exists in the visitor's own
+    // browser and WhatsApp app.
+    const waDigits = c.business.phoneHref.replace(/\D/g, "");
+    const buildWhatsAppMessage = data => {
+      const get = key => (data.get(key) || "").toString().trim();
+      const services = data.getAll("services").filter(Boolean).join(", ") || "Not specified";
+      const planLabel = form.plan?.selectedOptions?.[0]?.textContent?.trim() || "Please recommend";
+      return [
+        "Hello JTC Property Services, I would like to request information.",
+        "",
+        `Name: ${get("fullName")}`,
+        `Phone: ${get("telephone")}`,
+        `Email: ${get("email")}`,
+        `Preferred contact method: ${get("contactMethod")}`,
+        `Property address/location: ${get("propertyAddress")}`,
+        `Property type: ${get("propertyType")}`,
+        `Bedrooms: ${get("bedrooms")}`,
+        `Property status: ${get("propertyStatus")}`,
+        `Owner location: ${get("ownerLocation")}`,
+        `Preferred inspection frequency: ${get("frequency")}`,
+        `Preferred care plan: ${planLabel}`,
+        `Additional services requested: ${services}`,
+        `Key holding required: ${get("keyHolding")}`,
+        `Preferred start date: ${get("startDate") || "Not specified"}`,
+        `Message: ${get("concerns") || "None provided"}`,
+      ].join("\n");
+    };
+    form.addEventListener("submit", e => {
+      e.preventDefault(); const status=form.querySelector("[data-form-status]"); status.className="form-status";
       if(!form.checkValidity()){ form.reportValidity(); status.textContent="Please complete the required fields and check your contact details."; status.classList.add("show","error"); return; }
       if(form.website.value){ return; }
-      submit.disabled=true; submit.textContent="Sending…";
-      const endpoint=c.integrations.quoteEndpoint;
-      if(!endpoint){ setTimeout(() => { status.textContent="This proposal form is ready, but its live delivery endpoint still needs to be connected. Please call or email JTC to send your request now."; status.classList.add("show","error"); submit.disabled=false; submit.textContent="Request My Property Care Proposal"; },650); return; }
-      try { const data=new FormData(form); data.set("submittedAt",new Date().toISOString()); data.set("leadSource",c.integrations.leadSource); const res=await fetch(endpoint,{method:"POST",body:data,headers:{Accept:"application/json"}}); if(!res.ok) throw new Error(); form.reset(); status.textContent="Thank you. Your request has been received. JTC Property Services will review the property details and contact you to confirm availability and the most suitable service."; status.classList.add("show","success"); }
-      catch { status.textContent="We could not send your request. Please try again, call JTC, or email us directly."; status.classList.add("show","error"); }
-      finally { submit.disabled=false; submit.textContent="Request My Property Care Proposal"; }
+      const data = new FormData(form);
+      const waUrl = `https://wa.me/${waDigits}?text=${encodeURIComponent(buildWhatsAppMessage(data))}`;
+      window.open(waUrl, "_blank", "noopener");
+      status.innerHTML = `Opening WhatsApp with your enquiry pre-filled for JTC Property Services. If it did not open, <a href="${waUrl}" target="_blank" rel="noopener">tap here to continue on WhatsApp</a>, or email <a href="mailto:${c.business.email}">${c.business.email}</a>.`;
+      status.classList.add("show","success");
+      form.reset();
     });
   }
 })();
